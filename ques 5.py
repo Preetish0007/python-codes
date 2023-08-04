@@ -1,5 +1,5 @@
 def calculate_total_trek_length(A, B, C):
-    total_distance = 4 * (A + B + C)
+    total_distance =  (A + B + C) + (B - A) +(B - C)
     return total_distance
 
 # Input values for A, B, and C

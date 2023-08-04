@@ -1,18 +1,28 @@
-cards = [1, 5, 3, 4, 2, 3, 2]
+def nextCard(cards):
+    if not cards:
+        return None, []
+    next_card = cards[0]
+    new_hand = cards[1:] + [cards[0]]
+    return next_card, new_hand
 
-for _ in range(len(cards)):
-    next_card, cards = nextCard(cards)
-    print("Next card:", next_card)
-#program that uses the nextCard function to check a deck of cards
-    def check_for_pairs(cards):
+def check_consecutive_pairs(cards):
     for i in range(len(cards) - 1):
-        if cards[i] == cards[i + 1]:
+        if cards[i] == cards[i+1]:
             return True
     return False
 
-cards = [1, 5, 3, 4, 2, 2, 3]
+# A hand of cards
+cards = [1,2,2,3]
 
-if check_for_pairs(cards):
-    print("Consecutive identical pair found.")
-else:
-    print("No consecutive identical pairs found.")
+# Loop to call the function and print the top card each time
+while cards:
+    next_card, cards = nextCard(cards)
+    print("Next card:", next_card)
+
+    # Checking for consecutive identical pairs
+    if check_consecutive_pairs(cards):
+        print("Consecutive identical pair found!")
+        break    
+
+if not cards:
+    print("The deck is empty.")
